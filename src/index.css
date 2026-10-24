@@ -1,0 +1,110 @@
+@import "tailwindcss";
+
+@layer base {
+  :root {
+    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+    --font-display: 'Outfit', 'Plus Jakarta Sans', system-ui, sans-serif;
+  }
+
+  body {
+    font-family: var(--font-sans);
+    background-color: #030406;
+    color: #e2e8f0;
+    overflow-x: hidden;
+  }
+
+  h1, h2, h3, .font-display {
+    font-family: var(--font-display);
+  }
+}
+
+/* Custom cosmic animations */
+@keyframes blackhole-breathe {
+  0%, 100% {
+    transform: scale(1) translate3d(0, 0, 0);
+    filter: brightness(1) contrast(1.02);
+  }
+  50% {
+    transform: scale(1.025) translate3d(-4px, -2px, 0);
+    filter: brightness(1.08) contrast(1.05);
+  }
+}
+
+@keyframes photon-ring-glow {
+  0%, 100% {
+    opacity: 0.65;
+    filter: drop-shadow(0 0 16px rgba(255, 200, 130, 0.5));
+  }
+  50% {
+    opacity: 0.95;
+    filter: drop-shadow(0 0 28px rgba(255, 230, 180, 0.85));
+  }
+}
+
+@keyframes beacon-pulse {
+  0%, 90%, 100% {
+    opacity: 0.3;
+    transform: scale(0.9);
+  }
+  95% {
+    opacity: 1;
+    transform: scale(1.4);
+    box-shadow: 0 0 12px #38bdf8;
+  }
+}
+
+@keyframes slow-spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-breathe {
+  animation: blackhole-breathe 24s ease-in-out infinite;
+}
+
+.animate-photon {
+  animation: photon-ring-glow 5s ease-in-out infinite;
+}
+
+.animate-beacon {
+  animation: beacon-pulse 2.8s ease-in-out infinite;
+}
+
+.animate-slow-spin {
+  animation: slow-spin 48s linear infinite;
+}
+
+/* Glassmorphic card styling matching the Providence mockup */
+.providence-card {
+  background: linear-gradient(135deg, rgba(16, 22, 34, 0.72) 0%, rgba(6, 10, 18, 0.85) 100%);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  transition: all 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.providence-card:hover {
+  background: linear-gradient(135deg, rgba(24, 34, 52, 0.8) 0%, rgba(10, 16, 28, 0.92) 100%);
+  border-color: rgba(147, 197, 253, 0.32);
+  transform: translateY(-4px);
+  box-shadow: 0 16px 36px -12px rgba(0, 0, 0, 0.75), 0 0 24px -6px rgba(59, 130, 246, 0.2);
+}
+
+/* Custom scrollbar */
+::-webkit-scrollbar {
+  width: 6px;
+}
+::-webkit-scrollbar-track {
+  background: #030406;
+}
+::-webkit-scrollbar-thumb {
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 9999px;
+}
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(255, 255, 255, 0.3);
+}

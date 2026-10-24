@@ -1,0 +1,7 @@
+{
+  "name": "Providence — Un Ecosistema Cósmico",
+  "description": "Plataforma oficial de Providence: ideas, capital, tecnología e impacto en la frontera del cosmos.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
+
