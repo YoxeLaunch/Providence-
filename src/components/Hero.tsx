@@ -1,5 +1,6 @@
 import React from 'react';
 import { ArrowRight, ChevronDown } from 'lucide-react';
+import { ProvidenceLogoIcon } from './ProvidenceLogo';
 
 interface HeroProps {
   onLearnMore: () => void;
@@ -9,7 +10,7 @@ interface HeroProps {
 export const Hero: React.FC<HeroProps> = ({ onLearnMore, onScrollToEcosystem }) => {
   return (
     <section className="relative min-h-[64vh] lg:min-h-[70vh] flex flex-col justify-center px-6 lg:px-14 pt-28 pb-8 z-10 max-w-4xl">
-      {/* 1. Categorical Overline with clean typographic separators (Zero-Pill Discipline) */}
+      {/* 1. Categorical Overline with clean typographic separators */}
       <div className="flex items-center gap-2 text-xs md:text-sm tracking-[0.25em] text-slate-400/90 font-light uppercase mb-6 select-none">
         <span>IDEAS</span>
         <span className="text-slate-600">·</span>
@@ -20,28 +21,21 @@ export const Hero: React.FC<HeroProps> = ({ onLearnMore, onScrollToEcosystem }) 
         <span>IMPACTO</span>
       </div>
 
-      {/* 2. Headline: P R O V I D E N C E with glowing singularity 'O' */}
-      <h1 className="flex items-center text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-light text-white tracking-[0.28em] sm:tracking-[0.34em] uppercase select-none mb-6">
+      {/* 2. Headline: P R O V I D E N C E with unified, mathematically balanced Eclipse 'O' */}
+      <h1 className="flex items-center text-3xl sm:text-5xl md:text-6xl lg:text-7xl font-display font-light text-white tracking-[0.26em] sm:tracking-[0.32em] uppercase select-none mb-6">
         <span>P</span>
-        <span className="ml-2 sm:ml-4">R</span>
-        {/* The Event Horizon Singularity 'O' */}
-        <span className="relative inline-flex items-center justify-center w-8 h-8 sm:w-12 sm:h-12 md:w-14 md:h-14 lg:w-16 lg:h-16 mx-2 sm:mx-4">
-          {/* Luminous corona ring */}
-          <span className="absolute inset-0 rounded-full border border-amber-200/40 shadow-[0_0_24px_rgba(251,191,36,0.7)]" />
-          {/* Singularity core */}
-          <span className="w-6 h-6 sm:w-9 sm:h-9 md:w-11 md:h-11 lg:w-12 lg:h-12 rounded-full bg-[#050608] border border-amber-100/30" />
-          {/* Gravitational crescent arc */}
-          <span className="absolute -top-1 -left-1 w-full h-full rounded-full border-t-2 border-l-2 border-amber-100/90 shadow-[0_0_14px_#fef08a]" />
-          {/* Mini photon spark */}
-          <span className="absolute top-0 right-1 w-1.5 h-1.5 rounded-full bg-white shadow-[0_0_8px_#ffffff]" />
+        <span className="ml-2 sm:ml-3 md:ml-4">R</span>
+        {/* Unified Providence Planetary Eclipse 'O' */}
+        <span className="inline-flex items-center justify-center w-[0.82em] h-[0.82em] mx-[0.12em] shrink-0 transform -translate-y-[0.02em]">
+          <ProvidenceLogoIcon size="100%" className="w-full h-full" />
         </span>
         <span className="ml-1 sm:ml-2">V</span>
-        <span className="ml-2 sm:ml-4">I</span>
-        <span className="ml-2 sm:ml-4">D</span>
-        <span className="ml-2 sm:ml-4">E</span>
-        <span className="ml-2 sm:ml-4">N</span>
-        <span className="ml-2 sm:ml-4">C</span>
-        <span className="ml-2 sm:ml-4">E</span>
+        <span className="ml-2 sm:ml-3 md:ml-4">I</span>
+        <span className="ml-2 sm:ml-3 md:ml-4">D</span>
+        <span className="ml-2 sm:ml-3 md:ml-4">E</span>
+        <span className="ml-2 sm:ml-3 md:ml-4">N</span>
+        <span className="ml-2 sm:ml-3 md:ml-4">C</span>
+        <span className="ml-2 sm:ml-3 md:ml-4">E</span>
       </h1>
 
       {/* 3. Subtitle */}

@@ -1,5 +1,5 @@
 import React from 'react';
-import { ArrowRight, Hexagon, Target, Sparkles, Globe2 } from 'lucide-react';
+import { ArrowRight, Hexagon } from 'lucide-react';
 import {
   MagnusArtwork,
   GarageArtwork,
@@ -129,16 +129,16 @@ interface EcosystemCardsProps {
 
 export const EcosystemCards: React.FC<EcosystemCardsProps> = ({ onSelectDivision }) => {
   return (
-    <section id="ecosistema" className="relative z-10 px-6 lg:px-14 pt-12 pb-20 max-w-7xl mx-auto w-full">
+    <section id="ecosistema" className="relative z-10 px-6 lg:px-14 pt-8 pb-16 max-w-7xl mx-auto w-full">
       {/* Section Header matching mockup design */}
-      <div className="text-center mb-10 select-none">
-        <div className="flex items-center justify-center gap-3 text-xs tracking-[0.25em] text-slate-400 uppercase font-light mb-2.5">
+      <div className="text-center mb-8 select-none">
+        <div className="flex items-center justify-center gap-3 text-xs tracking-[0.25em] text-slate-400 uppercase font-light mb-2">
           <span className="w-8 h-[1px] bg-slate-600/60" />
           <span>NUESTROS SERVICIOS</span>
           <span className="w-8 h-[1px] bg-slate-600/60" />
         </div>
 
-        <h2 className="text-lg sm:text-2xl md:text-3xl font-display font-light text-white tracking-[0.22em] uppercase mb-2">
+        <h2 className="text-lg sm:text-2xl md:text-3xl font-display font-light text-white tracking-[0.22em] uppercase mb-1.5">
           UN ECOSISTEMA, MÚLTIPLES FRONTERAS
         </h2>
 
@@ -148,12 +148,12 @@ export const EcosystemCards: React.FC<EcosystemCardsProps> = ({ onSelectDivision
       </div>
 
       {/* 5 Cards Row matching the mockup layout */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4 lg:gap-3.5 xl:gap-4">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-5 gap-4">
         {DIVISIONS.map((division) => (
           <div
             key={division.id}
             onClick={() => onSelectDivision(division)}
-            className="providence-card group relative rounded-2xl overflow-hidden flex flex-col cursor-pointer"
+            className="providence-card group relative rounded-2xl overflow-hidden flex flex-col cursor-pointer border border-white/10 hover:border-cyan-400/50 bg-[#060a14]/80 backdrop-blur-md transition-all duration-300"
             role="button"
             tabIndex={0}
             aria-label={`Ver detalles de ${division.name}`}
@@ -164,36 +164,53 @@ export const EcosystemCards: React.FC<EcosystemCardsProps> = ({ onSelectDivision
               }
             }}
           >
-            {/* Top Artwork Thumbnail (4:3 aspect ratio matching mockup) */}
-            <div className="relative w-full aspect-[16/10] sm:aspect-[4/3] overflow-hidden border-b border-white/5">
+            {/* Top Artwork Thumbnail with photorealistic crops */}
+            <div className="relative w-full h-28 overflow-hidden border-b border-white/10">
               {division.artwork}
-              {/* Subtle top gloss */}
-              <div className="absolute inset-0 bg-gradient-to-t from-[#060a12] via-transparent to-transparent opacity-80" />
+              <div className="absolute inset-0 bg-gradient-to-t from-[#060a14] via-transparent to-transparent opacity-90 pointer-events-none" />
             </div>
 
             {/* Bottom Card Body */}
             <div className="p-4 flex flex-col flex-1 justify-between">
               <div>
-                {/* Division Icon & Title Lockup */}
+                {/* Division Icon matching mockup */}
                 <div className="flex items-center gap-2 mb-2.5">
                   {division.iconType === 'magnus' && (
                     <span className="text-white font-mono font-bold text-base tracking-tighter">|V|</span>
                   )}
                   {division.iconType === 'garage' && (
-                    <Hexagon className="w-5 h-5 text-amber-400" />
+                    <Hexagon className="w-5 h-5 text-white" strokeWidth={1.5} />
                   )}
                   {division.iconType === 'argus' && (
-                    <Target className="w-5 h-5 text-cyan-400" />
+                    <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="1.6">
+                      <circle cx="12" cy="12" r="9" />
+                      <circle cx="12" cy="12" r="4.5" />
+                      <circle cx="12" cy="12" r="1.5" fill="currentColor" />
+                    </svg>
                   )}
                   {division.iconType === 'kiwix' && (
-                    <Sparkles className="w-5 h-5 text-indigo-400" />
+                    <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="currentColor">
+                      <circle cx="12" cy="12" r="2.2" />
+                      <circle cx="12" cy="5" r="1.3" />
+                      <circle cx="17" cy="7" r="1.3" />
+                      <circle cx="19" cy="12" r="1.3" />
+                      <circle cx="17" cy="17" r="1.3" />
+                      <circle cx="12" cy="19" r="1.3" />
+                      <circle cx="7" cy="17" r="1.3" />
+                      <circle cx="5" cy="12" r="1.3" />
+                      <circle cx="7" cy="7" r="1.3" />
+                    </svg>
                   )}
                   {division.iconType === 'atlas' && (
-                    <Globe2 className="w-5 h-5 text-blue-400" />
+                    <svg viewBox="0 0 24 24" className="w-5 h-5 text-white" fill="none" stroke="currentColor" strokeWidth="1.6">
+                      <path d="M12 3 L3 20 L21 20 Z" />
+                      <circle cx="12" cy="13" r="2.5" />
+                      <line x1="12" y1="3" x2="12" y2="10.5" />
+                    </svg>
                   )}
                 </div>
 
-                <h3 className="text-sm font-display font-medium text-white tracking-wide mb-1.5 group-hover:text-cyan-200 transition-colors">
+                <h3 className="text-sm font-display font-medium text-white tracking-wide mb-1 group-hover:text-cyan-200 transition-colors">
                   {division.name}
                 </h3>
 
@@ -203,8 +220,8 @@ export const EcosystemCards: React.FC<EcosystemCardsProps> = ({ onSelectDivision
               </div>
 
               {/* Bottom Action Indicator Arrow */}
-              <div className="flex items-center justify-end pt-4 mt-2">
-                <span className="w-7 h-7 rounded-full border border-white/10 group-hover:border-cyan-400/60 group-hover:bg-cyan-500/10 flex items-center justify-center text-slate-400 group-hover:text-cyan-300 transition-all">
+              <div className="flex items-center justify-end pt-3 mt-1">
+                <span className="w-7 h-7 rounded-full border border-white/15 group-hover:border-cyan-400/60 group-hover:bg-cyan-500/10 flex items-center justify-center text-slate-300 group-hover:text-cyan-300 transition-all">
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
                 </span>
               </div>

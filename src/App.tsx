@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BlackHoleBackground } from './components/BlackHoleBackground';
 import { Navbar } from './components/Navbar';
 import { Hero } from './components/Hero';
@@ -7,6 +7,7 @@ import { DivisionModal } from './components/DivisionModal';
 import { AboutModal } from './components/AboutModal';
 import { InfoModal } from './components/InfoModal';
 import { ContactModal } from './components/ContactModal';
+import { AdminLoginModal } from './components/AdminLoginModal';
 import { Footer } from './components/Footer';
 
 export default function App() {
@@ -14,7 +15,15 @@ export default function App() {
   const [isAboutOpen, setIsAboutOpen] = useState(false);
   const [isInfoOpen, setIsInfoOpen] = useState(false);
   const [isContactOpen, setIsContactOpen] = useState(false);
+  const [isAdminLoginOpen, setIsAdminLoginOpen] = useState(false);
   const [contactSubject, setContactSubject] = useState('');
+
+  // Check URL parameters for admin redirect or hash
+  useEffect(() => {
+    if (window.location.search.includes('login=required') || window.location.hash === '#admin') {
+      setIsAdminLoginOpen(true);
+    }
+  }, []);
 
   const scrollToEcosystem = () => {
     const el = document.getElementById('ecosistema');
@@ -37,12 +46,13 @@ export default function App() {
       {/* 1. Animated High-Performance Black Hole Cosmic Canvas & Wallpaper */}
       <BlackHoleBackground speedMultiplier={1} interactiveParallax={true} />
 
-      {/* 2. Top Navigation Bar */}
+      {/* 2. Top Navigation Bar with Admin Gateway */}
       <Navbar
         onOpenAbout={() => setIsAboutOpen(true)}
         onOpenInfo={() => setIsInfoOpen(true)}
         onOpenContact={() => handleOpenContactWithSubject()}
         onScrollToEcosystem={scrollToEcosystem}
+        onOpenAdminLogin={() => setIsAdminLoginOpen(true)}
       />
 
       {/* 3. Main Content Container */}
@@ -89,6 +99,12 @@ export default function App() {
         isOpen={isContactOpen}
         onClose={() => setIsContactOpen(false)}
         defaultSubject={contactSubject}
+      />
+
+      <AdminLoginModal
+        isOpen={isAdminLoginOpen}
+        onClose={() => setIsAdminLoginOpen(false)}
+        onSuccess={() => setIsAdminLoginOpen(false)}
       />
     </div>
   );

@@ -1,12 +1,14 @@
 import React, { useState } from 'react';
-import { Volume2, VolumeX } from 'lucide-react';
+import { Volume2, VolumeX, Lock } from 'lucide-react';
 import { cosmicAudio } from '../utils/cosmicAudio';
+import { ProvidenceLogoIcon } from './ProvidenceLogo';
 
 interface NavbarProps {
   onOpenAbout: () => void;
   onOpenInfo: () => void;
   onOpenContact: () => void;
   onScrollToEcosystem: () => void;
+  onOpenAdminLogin: () => void;
 }
 
 export const Navbar: React.FC<NavbarProps> = ({
@@ -14,6 +16,7 @@ export const Navbar: React.FC<NavbarProps> = ({
   onOpenInfo,
   onOpenContact,
   onScrollToEcosystem,
+  onOpenAdminLogin,
 }) => {
   const [isPlayingAudio, setIsPlayingAudio] = useState(false);
 
@@ -23,19 +26,14 @@ export const Navbar: React.FC<NavbarProps> = ({
   };
 
   return (
-    <header className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between gap-8 px-6 lg:px-14 py-6 bg-gradient-to-b from-black/80 via-black/30 to-transparent backdrop-blur-xs transition-all duration-300">
-      {/* Zone 1: Brand Wordmark (Single distinct element) */}
+    <header className="fixed top-0 left-0 right-0 z-40 flex items-center justify-between gap-6 px-6 lg:px-14 py-6 bg-gradient-to-b from-black/80 via-black/30 to-transparent backdrop-blur-xs transition-all duration-300">
+      {/* Zone 1: Brand Wordmark with Unified Providence Icon */}
       <a
         href="#"
         className="group flex items-center gap-3 text-white tracking-[0.28em] font-display text-sm md:text-base font-light whitespace-nowrap shrink-0 uppercase select-none transition-opacity hover:opacity-90"
         aria-label="Providence Inicio"
       >
-        {/* Crescent Eclipse Cosmic Icon */}
-        <span className="relative flex items-center justify-center w-6 h-6">
-          <span className="absolute inset-0 rounded-full border border-white/20 group-hover:border-cyan-400/60 transition-colors" />
-          <span className="absolute -top-0.5 -right-0.5 w-2 h-2 rounded-full bg-white shadow-[0_0_8px_#ffffff] group-hover:shadow-[0_0_12px_#38bdf8]" />
-          <span className="w-4 h-4 rounded-full bg-slate-950 border border-slate-700/80 shadow-inner" />
-        </span>
+        <ProvidenceLogoIcon size={24} />
         <span className="tracking-[0.32em] font-normal text-slate-100">PROVIDENCE</span>
       </a>
 
@@ -61,8 +59,18 @@ export const Navbar: React.FC<NavbarProps> = ({
         </button>
       </nav>
 
-      {/* Zone 3: 1 Primary Action + Ambient Audio Affordance */}
+      {/* Zone 3: Actions + Admin Gateway + Ambient Audio */}
       <div className="flex items-center gap-3 shrink-0">
+        <button
+          onClick={onOpenAdminLogin}
+          className="flex items-center gap-1.5 px-3 py-1.5 text-[11px] tracking-[0.16em] font-medium text-slate-300 hover:text-cyan-200 uppercase rounded-lg border border-white/10 hover:border-cyan-400/50 bg-black/40 hover:bg-cyan-950/20 backdrop-blur-sm transition-all duration-200 cursor-pointer"
+          title="Iniciar sesión en la consola técnica de Providence"
+          aria-label="Acceso administrador"
+        >
+          <Lock className="w-3 h-3 text-cyan-400" />
+          <span className="hidden sm:inline">INICIAR SESIÓN</span>
+        </button>
+
         <button
           onClick={handleToggleAudio}
           className={`p-2 rounded-full border transition-all duration-300 cursor-pointer ${
